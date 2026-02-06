@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_package = "dhbw.trasima.trasima_aufgabe07";
+option java_multiple_files = true;
+
+service TrasimaService {
+  rpc PublishPosition (V2State) returns (Ack);
+  rpc Fetch (V2Id) returns (V2State);
+  rpc FetchAll (Empty) returns (V2List);
+}
+
+message V2Id {
+  int32 id = 1;
+}
+
+message V2State {
+  int32 id = 1;
+  double x = 2;
+  double y = 3;
+  double speed = 4;
+}
+
+message V2List {
+  repeated V2State states = 1;
+}
+
+message Ack {
+  string message = 1;
+}
+
+message Empty {}
