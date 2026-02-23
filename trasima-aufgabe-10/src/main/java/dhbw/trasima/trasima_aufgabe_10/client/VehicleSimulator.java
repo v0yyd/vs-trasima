@@ -96,12 +96,11 @@ final class VehicleSimulator {
         lat = start.lat();
         lon = start.lon();
 
-        // Pick a random speed (m/s) within [min, max].
-        double min = speedCfg.minMps;
-        double max = speedCfg.maxMps;
-        if (!(max >= min)) {
-            max = min;
-        }
-        speedMps = rng.nextDouble(min, max == min ? min + 0.000001 : max);
+        // Pick a random speed (km/h) within [min, max] and convert to m/s.
+        // RestSimulationClientMain#sanitize ensures minKmh/maxKmh are valid.
+        double minKmh = speedCfg.minKmh;
+        double maxKmh = speedCfg.maxKmh;
+        double speedKmh = rng.nextDouble(minKmh, maxKmh == minKmh ? minKmh + 0.000001 : maxKmh);
+        speedMps = speedKmh / 3.6;
     }
 }

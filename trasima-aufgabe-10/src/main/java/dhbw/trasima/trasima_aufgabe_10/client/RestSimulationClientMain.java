@@ -50,7 +50,7 @@ public final class RestSimulationClientMain {
         System.out.println("Spawn: center=(" + config.spawn.centerLat + "," + config.spawn.centerLon + ") radius="
                 + config.spawn.radiusMeters + "m");
         System.out.println("Destination: (" + config.destination.lat + "," + config.destination.lon + ")");
-        System.out.println("Speed: " + config.speed.minMps + ".." + config.speed.maxMps + " m/s; interval="
+        System.out.println("Speed: " + config.speed.minKmh + ".." + config.speed.maxKmh + " km/h; interval="
                 + config.updateIntervalMillis + "ms");
 
         // Create N vehicles with ids 1..N.
@@ -198,6 +198,17 @@ public final class RestSimulationClientMain {
         }
         if (config.baseUrl == null || config.baseUrl.isBlank()) {
             config.baseUrl = "http://localhost:8080";
+        }
+
+        // Speed sanity checks (km/h).
+        if (config.speed.minKmh < 0.0) {
+            config.speed.minKmh = 0.0;
+        }
+        if (config.speed.maxKmh < 0.0) {
+            config.speed.maxKmh = 0.0;
+        }
+        if (config.speed.maxKmh < config.speed.minKmh) {
+            config.speed.maxKmh = config.speed.minKmh;
         }
         return config;
     }

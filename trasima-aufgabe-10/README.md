@@ -22,7 +22,7 @@ Wichtige Felder in der Config:
 
 - `spawn.centerLat/centerLon` + `spawn.radiusMeters`: Spawn-Bereich (z. B. Mannheim)
 - `destination.lat/lon`: Ziel (z. B. SAP Arena)
-- `speed.minMps/maxMps`: Geschwindigkeit in m/s
+- `speed.minKmh/maxKmh`: Geschwindigkeit in km/h
 - `updateIntervalMillis`: Polling/Update Intervall
 - `onArrival`: `"respawn"` oder `"stop"`
 
@@ -37,4 +37,3 @@ Simulation (mit Config):
 - `mvn -pl trasima-aufgabe-10 exec:java -Dexec.mainClass=dhbw.trasima.trasima_aufgabe_10.client.RestSimulationClientMain -Dexec.args="--config trasima-aufgabe-10/sim-config.json"`
 
 Optional kannst du `--vehicles` oder `--baseUrl` als Override zur Config mitgeben.
-

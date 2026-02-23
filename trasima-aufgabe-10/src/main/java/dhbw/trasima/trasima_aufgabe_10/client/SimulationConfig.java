@@ -44,14 +44,14 @@ public final class SimulationConfig {
     /** Vehicles drive towards this fixed destination. */
     public Destination destination = new Destination();
 
-    /** Vehicle speed in meters/second. */
+    /** Vehicle speed configuration (prefer km/h in JSON). */
     public Speed speed = new Speed();
 
     /** Consider destination reached when within this radius (meters). */
     public double arrivalRadiusMeters = 25.0;
 
     /** What to do when a vehicle arrives: "respawn" (default) or "stop". */
-    public String onArrival = "respawn";
+    public String onArrival = "stop";
 
     public static final class Spawn {
         /** Mannheim-ish defaults. */
@@ -67,7 +67,10 @@ public final class SimulationConfig {
     }
 
     public static final class Speed {
-        public double minMps = 5.0;
-        public double maxMps = 15.0;
+        /**
+         * unit for config files: km/h.
+         */
+        public double minKmh = 30.0;
+        public double maxKmh = 70.0;
     }
 }
