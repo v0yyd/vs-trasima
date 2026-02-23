@@ -62,15 +62,15 @@ public final class SimulationConfig {
 
     public static final class Destination {
         /** Example: SAP Arena Mannheim (adjust as needed). */
-        public double lat = 49.4636;
-        public double lon = 8.5147;
+        public double lat = 49.4652;
+        public double lon = 8.5186;
     }
 
     public static final class Speed {
         /**
          * unit for config files: km/h.
          */
-        public double minKmh = 30.0;
+        public double minKmh = 50.0;
         public double maxKmh = 70.0;
     }
 }
